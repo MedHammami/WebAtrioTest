@@ -1,0 +1,38 @@
+{# templates/user/list_users.html.twig #}
+
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des utilisateurs{% endblock %}
+
+{% block body %}
+    <h1>Liste des utilisateurs</h1>
+
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Nom</th>
+            <th>Âge</th>
+            <th>Emplois actuels</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for user in usersInfo %}
+            <tr>
+                <td>{{ user.nom }}</td>
+                <td>{{ user.age }}</td>
+                <td>
+                    {% if user.actual_job is empty %}
+                        Aucun emploi actuel
+                    {% else %}
+                        <ul>
+                            {% for emploi in user.actual_job %}
+                                <li>{{ emploi.name }}</li>
+                            {% endfor %}
+                        </ul>
+                    {% endif %}
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

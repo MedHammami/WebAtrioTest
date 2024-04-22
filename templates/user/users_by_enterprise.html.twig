@@ -1,0 +1,19 @@
+{# templates/user/users_by_enterprise.html.twig #}
+
+{% extends 'base.html.twig' %}
+
+{% block title %}Utilisateurs travaillant pour {{ society }}{% endblock %}
+
+{% block body %}
+    <h1>Utilisateurs travaillant pour {{ society }}</h1>
+
+    {% if users is empty %}
+        <p>Aucun utilisateur trouvé pour cette entreprise.</p>
+    {% else %}
+        <ul>
+            {% for user in users %}
+                <li>{{ user.getLastName() }} {{ user.getFirtName() }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+{% endblock %}
